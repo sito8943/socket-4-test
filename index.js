@@ -1,10 +1,19 @@
 const cors = require("cors");
 const app = require("express")();
 const server = require("http").createServer(app);
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "http://localhost:3001",
+    methods: ["GET", "POST"],
+  },
+});
 const port = process.env.PORT || 8080;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://192.168.1.101:3001",
+  })
+);
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
