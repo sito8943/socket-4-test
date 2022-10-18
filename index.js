@@ -3,7 +3,7 @@ const app = require("express")();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3001",
+    origin: "https://server-dashboard-test.herokuapp.com/",
     methods: ["GET", "POST"],
   },
 });
@@ -11,7 +11,7 @@ const port = process.env.PORT || 8080;
 
 app.use(
   cors({
-    origin: "http://192.168.1.101:3001",
+    origin: "https://server-dashboard-test.herokuapp.com/",
   })
 );
 app.get("/", function (req, res) {
